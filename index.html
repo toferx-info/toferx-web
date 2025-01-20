@@ -1,1 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Discord Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c2f33;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
 
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .discord-id {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #7289da;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.2s;
+            perspective: 1000px;
+        }
+
+        .button:active {
+            transform: translateY(4px);
+        }
+
+        .button-3d {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .button-3d:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateZ(-1px) scale(1.1);
+            transition: transform 0.3s;
+            z-index: 0;
+        }
+
+        .button-3d:hover:before {
+            transform: translateZ(-1px) scale(1.2);
+        }
+
+        .button-3d span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Your Discord Profile</h1>
+    <div class="discord-id">
+        Discord ID: <strong id="discordId">YourDiscordID#1234</strong>
+    </div>
+    
+    <div class="button-3d">
+        <a href="#" class="button" onclick="fetchProfile()">
+            <span>View Profile</span>
+        </a>
+    </div>
+
+    <div class="profile-info" id="profileInfo"></div>
+
+    <script>
+        async function fetchProfile() {
+            const discordId = document.getElementById('discordId').innerText;
+            const response = await fetch(`https://discord.com/api/v10/users/${discordId}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bot YOUR_BOT_TOKEN' // Replace with your bot token
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                document.getElementById('profileInfo').innerHTML = `
+                    <h2>${data.username}#${data.discriminator}</h2>
+                    <img src="${data.avatar ? `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png` : 'https://cdn.discordapp.com/embed/avatars/0.png'}" alt="Avatar" width="100">
+                    <p>ID: ${data.id}</p>
+                    <p>Bot: ${data.bot ? 'Yes' : 'No'}</p>
+                `;
+            } else {
+                document.getElementById('profileInfo').innerText = 'Failed to fetch profile. Please check the Discord ID and bot token.';
+            }
+        }
+    </script>
+
+</body>
+</html>
