@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Experience Showcase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1c1c1c, #4d4d4d); /* Black to grey gradient */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #7289da;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .section h2 {
+            margin-bottom: 10px;
+        }
+
+        .item {
+            margin: 5px 0;
+            text-align: left;
+        }
+
+        .button {
+            background-color: #7289da;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 20px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.2s;
+            perspective: 1000px;
+        }
+
+        .button:active {
+            transform: translateY(4px);
+        }
+
+        .button-3d {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .button-3d:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateZ(-1px) scale(1.1);
+            transition: transform 0.3s;
+            z-index: 0;
+        }
+
+        .button-3d:hover:before {
+            transform: translateZ(-1px) scale(1.2);
+        }
+
+        .button-3d span {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Your Experience Showcase</h1>
+
+    <div class="section">
+        <h2>Games Created</h2>
+        <div class="item">Game 1: <strong>Your Game Title</strong> - Description of the game.</div>
+        <div class="item">Game 2: <strong>Your Game Title</strong> - Description of the game.</div>
+        <div class="item">Game 3: <strong>Your Game Title</strong> - Description of the game.</div>
+        <!-- Add more games as needed -->
+    </div>
+
+    <div class="section">
+        <h2>Staff Roles</h2>
+        <div class="item">Role 1: <strong>Your Role Title</strong> - Description of your responsibilities.</div>
+        <div class="item">Role 2: <strong>Your Role Title</strong> - Description of your responsibilities.</div>
+        <div class="item">Role 3: <strong>Your Role Title</strong> - Description of your responsibilities.</div>
+        <!-- Add more roles as needed -->
+    </div>
+
+    <div class="section">
+        <h2>Discord Servers</h2>
+        <div class="item">Server 1: <strong>Your Server Name</strong> - Brief description of the server.</div>
+        <div class="item">Server 2: <strong>Your Server Name</strong> - Brief description of the server.</div>
+        <div class="item">Server 3: <strong>Your Server Name</strong> - Brief description of the server.</div>
+        <!-- Add more servers as needed -->
+    </div>
+
+    <div class="button-3d">
+        <a href="index.html" class="button">
+            <span>Back to Home</span>
+        </a>
+    </div>
+
+</body>
+</html>
